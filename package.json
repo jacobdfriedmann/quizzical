@@ -1,0 +1,33 @@
+{
+  "name": "quizzical",
+  "version": "0.0.1",
+  "description": "A Slack Bot for administering quizzes.",
+  "main": "index.js",
+  "bin": {
+    "quizzical": "bin/quizzical.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob Friedmann",
+  "license": "MIT",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "plotly": "^1.0.6",
+    "slackbots": "^0.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jacobdfriedmann/quizzical.git"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "example_config.json",
+    "example_quiz.json",
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+	"plotlyUsername": "[YOUR PLOTLY USERNAME]",
+	"plotlyAPIKey": "[YOUR PLOTLY API KEY]",
+	"slackToken": "[YOUR BOT API KEY]",
+	"botName": "[YOUR BOT NAME]"
+}

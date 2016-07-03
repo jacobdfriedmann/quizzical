@@ -1,0 +1,20 @@
+{
+	"id": "example-quiz",
+	"name": "Example Quiz",
+	"questions": [
+        {
+            "q": "What shape is the earth?",
+            "a": "a",
+            "choices": {
+                "a": "Round",
+                "b": "Square",
+                "c": "Triangular",
+                "d": "Brown"
+            }
+        },
+        {
+            "q": "There are ___ continents on earth",
+            "a": "7"
+        }
+    ]
+}
