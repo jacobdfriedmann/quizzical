@@ -7,7 +7,7 @@ A Slack Bot for administering quizzes.
 Install using the node package manager.
 
 ```bash
-npm install quizzical
+npm install -g quizzical
 ```
 
 ## Prerequisites
@@ -25,7 +25,7 @@ Optionally, you can configure Quizzical with Plot.ly information so that Quizzic
 Quizzical is a node application. Run it with:
 
 ```bash
-npm start [configuration options]
+quizzical [configuration options]
 ```
 
 ### Configuration
@@ -35,7 +35,7 @@ Configuration options can be passed via the command line or in a configuration f
 #### Command line
 
 ```bash
-npm start --slackToken abcd-123456 --botName "My Quizzical Bot" example_quiz.json
+quizzical --slackToken abcd-123456 --botName "My Quizzical Bot" example_quiz.json
 ```
 
 #### Configuration file
@@ -48,7 +48,7 @@ npm start --slackToken abcd-123456 --botName "My Quizzical Bot" example_quiz.jso
 ```
 
 ```bash
-npm start --config example_config.json example_quiz.json
+quizzical --config example_config.json example_quiz.json
 ```
 
 #### Configuration options
@@ -66,7 +66,7 @@ config | | n/a | Configuration file. Command line only.
 You need to create quiz files for Quizzical in order to administer quizzes. You can add multiple quizzes by listing the files when running Quizzical.
 
 ```bash
-npm start --config example_config.json example_quiz.json quiz2.json quiz3.json
+quizzical --config example_config.json example_quiz.json quiz2.json quiz3.json
 ```
 
 A quiz file looks like this:
@@ -106,3 +106,19 @@ In order to start a quiz, a Slack user (the instructor), needs to `@` message th
 Once the quiz is started, other Slack users (students) respond to it the Quizzical bot via direct message.
 
 ![Answer Question](img/answer_question.png)
+
+After everyone has had a chance to answer the first question, the instructor issues the `next` command to start the quiz in ernest. From now on, the quiz will automatically advance to the next question when all students have answered.
+
+![Next Question](img/next_question.png)
+
+Quizzical will report how students are doing in real time to the instructor.
+
+![Instructor Report](img/instructor_report.png)
+
+Finally, when the last question has been asked and answered, Quizzical will end the quiz, report the aggregate results in the public channel.
+
+![Quiz Summary](img/quiz_summary.png)
+
+ Quizzical will also report individual results via direct message.
+
+![Student Report](img/student_report.png)
