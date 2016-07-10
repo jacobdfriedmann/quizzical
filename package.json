@@ -1,6 +1,6 @@
 {
   "name": "quizzical",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Slack Bot for administering quizzes.",
   "main": "index.js",
   "bin": {

@@ -34,7 +34,8 @@ module.exports = {
                     title: quiz.template.name + ': Q' + (quiz.currentQuestion + 1),
                     fields: fields,
                     footer: 'Quizzical',
-                    fallback: question.q
+                    fallback: question.q,
+                    mrkdwn_in: ['text', 'fields']
                 }
             ]
         };
