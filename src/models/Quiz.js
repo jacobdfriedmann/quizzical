@@ -47,6 +47,9 @@ Quiz.prototype.gradeQuestion = function(answer, student, channel) {
 }
 
 Quiz.prototype.getQuestionAggregateResult = function() {
+    if (!this.resultsByQuestion[this.currentQuestion]) {
+      throw new Error('No one has answered this question');
+    }
     const question = this.template.questions[this.currentQuestion];
     let numberCorrect = 0;
     let numberWrong = 0;
@@ -83,7 +86,7 @@ Quiz.prototype.getQuizAggregateResult = function() {
         let total = 0;
         this.resultsByStudent[student].forEach((question, i) => {
             total++;
-            if (question.correct) {
+            if (question && question.correct) {
                 totalCorrect++;
                 correctByQuestion[i]++;
             } else {
@@ -153,6 +156,27 @@ Quiz.prototype.numberOfStudentsUnanswered = function() {
 
     return this.resultsByQuestion[0].length -
         this.resultsByQuestion[this.currentQuestion].length;
+}
+
+Quiz.prototype.getUnansweredStudents = function() {
+  var unansweredStudents = [];
+  if (this.currentQuestion === 0) {
+    return unansweredStudents;
+  } else {
+    this.resultsByQuestion[0].forEach(function(studentAnswer) {
+      var studentAnswerCurrentQuestion;
+      if (this.resultsByQuestion[this.currentQuestion]) {
+        studentAnswerCurrentQuestion =
+          this.resultsByQuestion[this.currentQuestion].find(function(sA) {
+            return sA.student === studentAnswer.student;
+          });
+      }
+      if (!studentAnswerCurrentQuestion) {
+        unansweredStudents.push(studentAnswer.student);
+      }
+    }.bind(this));
+  }
+  return unansweredStudents;
 }
 
 Quiz.prototype.isStudentInQuiz = function(student) {

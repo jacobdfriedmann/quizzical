@@ -20,6 +20,6 @@ module.exports = {
     ERROR_ANSWERED: 'Sorry, you\'ve already answered this question',
     ERROR_NOT_FOUND: 'Sorry, I don\'t recognize that quiz.',
     ERROR_NOT_PARTICIPATING: 'Sorry, you are not participating in the quiz.',
-    ERROR_STUDENTS_NOT_FINISHED: ' people have not finished the question',
+    ERROR_STUDENTS_NOT_FINISHED: ' not finished the question',
     ERROR_NOT_VALID_CHOICE: 'Sorry, that is not one of the choices, guess again'
 };

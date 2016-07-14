@@ -56,7 +56,7 @@ bot.on('message', (data) => {
                     startQuiz(data.channel, data.user, args[2]);
                     break;
                 case constants.NEXT_COMMAND:
-                    nextQuestion(data.channel, data.user);
+                    nextQuestion(data.channel, data.user, args[2] === 'force');
                     break;
                 case constants.END_COMMAND:
                     endQuiz(data.channel, data.user);
@@ -181,9 +181,17 @@ function nextQuestion(channel, user, force) {
         throw new Error(constants.ERROR_PERMISSION_DENIED);
     }
     // Make sure all students have answered
-    if (!force && quiz.numberOfStudentsUnanswered() > 0) {
+    const unansweredStudents = quiz.getUnansweredStudents()
+    if (!force && unansweredStudents.length > 0) {
+        unansweredStudents.forEach(function(student) {
+          bot.postMessage(
+              quiz.studentChannels[student],
+              slackMessageBuilders.pleaseAnswerMessage(quiz)
+          );
+        })
         throw new Error(
-            quiz.numberOfStudentsUnanswered() +
+            unansweredStudents.length +
+            (unansweredStudents.length > 1 ? 'people have' : 'person has') +
             constants.ERROR_STUDENTS_NOT_FINISHED
         );
     }

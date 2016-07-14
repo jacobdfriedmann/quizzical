@@ -53,6 +53,10 @@ module.exports = {
         return ':x:';
     },
 
+    pleaseAnswerMessage(quiz) {
+        return 'Please answer question ' + (quiz.currentQuestion + 1);
+    },
+
     instructorCorrectMessage(student, quiz) {
         return '<@' + student + '> got question ' + (quiz.currentQuestion + 1) + ' right!';
     },
